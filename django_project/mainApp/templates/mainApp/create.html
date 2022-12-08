@@ -1,0 +1,18 @@
+<!-- Снизу код связывает файлы. То есть мы как бы всё наследуем в этом фалйе от файла 'mainApp/base.html' -->
+{% extends 'mainApp/base.html' %}
+
+{% block title %}
+Создать task
+{% endblock %}
+
+{% block content %}
+    <h1>Создать task</h1>
+    <!-- Снизу создаём форму для ввода названия и описания -->
+    <form method="post">
+        {% csrf_token %} <!-- Это специальный токен, который обязательно нужен для отправки форм -->
+        {{ form.title }}<br>
+        {{ form.task }}<br>
+        <button type="submit" class="btn btn-success">Добавить</button>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}
